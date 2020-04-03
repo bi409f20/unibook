@@ -8,17 +8,21 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Kasper\\.nuget\\packages\\": {}
+    "C:\\Users\\Kasper\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kasper\\source\\repos\\unibook\\unibook\\unibook.csproj",
+      "projectUniqueName": "C:\\Users\\Kasper\\Desktop\\test\\unibook\\unibook\\unibook\\unibook.csproj",
       "projectName": "unibook",
-      "projectPath": "C:\\Users\\Kasper\\source\\repos\\unibook\\unibook\\unibook.csproj",
+      "projectPath": "C:\\Users\\Kasper\\Desktop\\test\\unibook\\unibook\\unibook\\unibook.csproj",
       "packagesPath": "C:\\Users\\Kasper\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kasper\\source\\repos\\unibook\\unibook\\obj\\",
+      "outputPath": "C:\\Users\\Kasper\\Desktop\\test\\unibook\\unibook\\unibook\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\Kasper\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -61,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
