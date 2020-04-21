@@ -7,5 +7,9 @@ namespace unibook
 {
     public class Test
     {
+        public void Hejmor()
+        {
+            Console.WriteLine("Hej MOR") ;
+        }
     }
 }

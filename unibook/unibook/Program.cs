@@ -15,7 +15,7 @@ namespace unibook
         {
             CreateHostBuilder(args).Build().Run();
             var d = new Test();
-            d.hejmor();
+            d.Hejmor();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
