@@ -6,3 +6,12 @@
 
 <h1>Hej alle sammen nu har vi noget ekstra til vores side :) </h1>
 
+ myConnection = New MySqlConnection("server=localhost; user id=root; password='Gutterne2020';       database=test; pooling=false;")
+    strSQL = "SELECT * FROM User;"
+    myDataAdapter = New MySqlDataAdapter(strSQL, myConnection)
+    myDataSet = New Dataset()
+    myDataAdapter.Fill(myDataSet, "mytable")
+    MySQLDataGrid.DataSource = myDataSet
+    MySQLDataGrid.DataBind()
+
+<asp:DataGrid id="MySQLDataGrid" runat="server" />
