@@ -5,6 +5,20 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core"> Joachim </a>.</p>
+    <h1 class="display-4">Unibook</h1>
+    <p>
+        Search for books:
+    </p>
+        <form asp-controller="Listings" asp-action="="Index">
+            <p>
+            <input type="text" name="SeachString">
+            <input type="submit" value="Search" />
+            </p>
+        </form>
+    <table class="table">
+        <thead>
+
+        </thead>
+
+    </table>
 </div>
