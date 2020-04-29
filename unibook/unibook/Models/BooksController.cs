@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace unibook.Models
 {
-    public class BooksController : Controller
+    public class BooksController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            UnibookContext context = HttpContext.RequestServices.GetService(typeof(unibook.Models.UnibookContext)) as UnibookContext;
+        private readonly UnibookContext _context;
 
-            return View(context.GetAllBooks());
+        public BooksController(UnibookContext context)
+        {
+            _context = context;
         }
     }
 }
