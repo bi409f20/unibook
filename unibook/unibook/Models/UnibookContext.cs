@@ -16,7 +16,7 @@ namespace unibook.Models
 
         private MySqlConnection GetConnection()
         {
-            return new MySqlConnection("Server=127.0.0.1;Port=3306;Database=Unibook;User=root;Pwd=Gutterne2020;Connection Timeout = 120;");
+            return new MySqlConnection(ConnectionString);
         }
         public List<Books> GetAllBooks()
         {
