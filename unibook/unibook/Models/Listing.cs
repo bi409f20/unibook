@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace unibook
+namespace unibook.Models
 {
-    public class Test
+    public class Listing
     {
         public void Hejmor()
         {
