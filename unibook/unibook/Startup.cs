@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using unibook.Models;
+using unibook.Data;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace unibook
@@ -27,10 +28,10 @@ namespace unibook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<UnibookContext>(
-                 options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")
-              ));
-            services.AddMvc();
+            services.AddRazorPages();
+
+            services.AddDbContext<UnibookContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

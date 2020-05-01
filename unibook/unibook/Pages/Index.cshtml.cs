@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using unibook.Models;
+using unibook.Data;
 
 namespace unibook.Pages
 {
@@ -21,5 +23,9 @@ namespace unibook.Pages
         {
 
         }
+        public Book book { get; set; }
+        public Listing listing { get; set; }
+        public User user { get; set; }
+
     }
 }

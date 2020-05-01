@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace unibook.Models
 {
-    public class Books
+    public class Book
     {
-        private UnibookContext context;
         public string ISBN { get; set; }
         public string Author { get; set; }
         public string Edition { get; set; }
         public string Title { get; set; }
 
-
+        public ICollection<Listing> Listings { get; set; }
+        public Listing Listing { get; set; }
     }
 }
