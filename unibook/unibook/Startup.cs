@@ -31,7 +31,7 @@ namespace unibook
             services.AddRazorPages();
 
             services.AddDbContext<UnibookContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+                    options.UseMySql("Server=127.0.0.1;Port=3306;Database=UnibookEF;User=root;Pwd=Gutterne2020;Connection Timeout = 120;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
