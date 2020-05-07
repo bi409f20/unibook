@@ -29,7 +29,7 @@ namespace unibook.Data
         {
             public void Configure(EntityTypeBuilder<Listing> builder)
             {
-                builder.HasMany(l => l.Books);
+                builder.HasOne(l => l.Book).WithMany(b => b.Listings);
             }
         }
 
