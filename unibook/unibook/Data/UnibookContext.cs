@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using unibook.Models;
 
 namespace unibook.Data
@@ -21,6 +22,23 @@ namespace unibook.Data
             modelBuilder.Entity<Listing>().ToTable("Listings");
             modelBuilder.Entity<User>().ToTable("Users");
 
+            modelBuilder.ApplyConfiguration(new BookConfiguration());
+        }
+
+        private class ListingConfiguration : IEntityTypeConfiguration<Listing>
+        {
+            public void Configure(EntityTypeBuilder<Listing> builder)
+            {
+                builder.HasMany(l => l.Books);
+            }
+        }
+
+        private class BookConfiguration : IEntityTypeConfiguration<Book>
+        {
+            public void Configure(EntityTypeBuilder<Book> builder)
+            {
+                builder.HasKey(b => b.ISBN);
+            }
         }
     }
 }

@@ -11,8 +11,5 @@ namespace unibook.Models
         public string Author { get; set; }
         public string Edition { get; set; }
         public string Title { get; set; }
-
-        public ICollection<Listing> Listings { get; set; }
-        public Listing Listing { get; set; }
     }
 }
