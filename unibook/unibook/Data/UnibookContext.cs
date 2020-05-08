@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using unibook.Models;
 
 namespace unibook.Data
 {
-    public class UnibookContext : DbContext
+    public class UnibookContext : IdentityDbContext
     {
         public UnibookContext(DbContextOptions<UnibookContext> options)
             : base(options)
@@ -20,6 +21,7 @@ namespace unibook.Data
         {
             modelBuilder.Entity<Book>().ToTable("Books");
             modelBuilder.Entity<Listing>().ToTable("Listings");
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>().ToTable("Users");
 
             modelBuilder.ApplyConfiguration(new BookConfiguration());

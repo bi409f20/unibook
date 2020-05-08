@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using unibook.Models;
 using unibook.Data;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 
 namespace unibook
 {
@@ -28,10 +29,13 @@ namespace unibook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddRazorPages();
 
             services.AddDbContext<UnibookContext>(options =>
                     options.UseMySql("Server=127.0.0.1;Port=3306;Database=UnibookEF;User=root;Pwd=Gutterne2020;Connection Timeout = 120;"));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<UnibookContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +57,8 @@ namespace unibook
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
