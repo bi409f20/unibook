@@ -21,21 +21,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Test">Test</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/_LoginPartial">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/_LoginPagePartial">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/CreateListing">Create listing</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="~/Areas/Identity/Pages/Account/Register">Register</a>
                         </li>
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>

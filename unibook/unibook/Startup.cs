@@ -33,7 +33,7 @@ namespace unibook
             services.AddRazorPages();
 
             services.AddDbContext<UnibookContext>(options =>
-                    options.UseMySql("Server=127.0.0.1;Port=3306;Database=UnibookEF;User=root;Pwd=Gutterne2020;Connection Timeout = 120;"));
+                    options.UseMySql("Server=127.0.0.1;Port=3307;Database=UnibookEF;User=root;Pwd=Gutterne2020;Connection Timeout = 120;"));
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<UnibookContext>();
         }
@@ -54,12 +54,10 @@ namespace unibook
 
             app.UseStaticFiles();
 
-            app.UseRouting();
-
-            app.UseAuthorization();
-
             app.UseAuthentication();
 
+            app.UseRouting();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
