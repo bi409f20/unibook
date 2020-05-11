@@ -12,7 +12,7 @@ namespace unibook.Models
         public string Study { get; set; }
         public string University { get; set; }
         public string Description { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         public User User { get; set; }
         public Book Book { get; set; }

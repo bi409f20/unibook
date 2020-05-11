@@ -33,7 +33,7 @@ namespace unibook
             services.AddRazorPages();
 
             services.AddDbContext<UnibookContext>(options =>
-                    options.UseMySql("Server=127.0.0.1;Port=3306;Database=UnibookNEW;User=root;Pwd=Gutterne2020;Connection Timeout = 120;"));
+                    options.UseMySql("Server=127.0.0.1;Port=3307;Database=UnibookDatter;User=root;Pwd=Gutterne2020;Connection Timeout = 120;"));
             services.AddIdentity<User, IdentityRole>()
                     .AddEntityFrameworkStores<UnibookContext>();
         }
