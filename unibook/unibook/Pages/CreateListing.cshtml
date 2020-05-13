@@ -4,81 +4,80 @@
     ViewData["Title"] = "CreateListing";
 }
 
-<h1>CreateListing</h1>
+<h1>Create new listing</h1>
 <div class="pl-2 container-fluid">
     <div class="row">
-        <div class="col-md-7">
-            <form>
+        <div class="col-md-6">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Title"></label>
+                    <input asp-for="Input.Title" class="form-control" />
+                    <span asp-validation-for="Input.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Author"></label>
+                    <input asp-for="Input.Author" class="form-control" />
+                    <span asp-validation-for="Input.Author" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Edition"></label>
+                    <input asp-for="Input.Edition" class="form-control" />
+                    <span asp-validation-for="Input.Edition" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ISBN"></label>
+                    <input asp-for="Input.ISBN" class="form-control" />
+                    <span asp-validation-for="Input.ISBN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Price"></label>
+                    <input asp-for="Input.Price" class="form-control" />
+                    <span asp-validation-for="Input.Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Semester"></label>
+                    <input asp-for="Input.Semester" class="form-control" />
+                    <span asp-validation-for="Input.Semester" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.University"></label>
+                    <input asp-for="Input.University" class="form-control" />
+                    <span asp-validation-for="Input.University" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Study"></label>
+                    <input asp-for="Input.Study" class="form-control" />
+                    <span asp-validation-for="Input.Study" class="text-danger"></span>
+                </div>
 
-                <div class="form-group row">
-                    <label for="exampleTitle" class="col-sm-2 col-form-label">Title</label>
-                    <div class="pl-2 w-75 ">
-                        <input type="text" class="form-control" id="exampleCourse" placeholder="Title">
-                    </div>
+                <div class="form-group">
+                    <label asp-for="Input.Description"></label>
+                    <input asp-for="Input.Description" class="form-control" />
+                    <span asp-validation-for="Input.Description" class="text-danger"></span>
                 </div>
-                <div class="form-group row mr-n3">
-                    <label for="examplePrice" class="col-sm-2 col-form-label">Price</label>
-                    <div class="pl-2 w-75">
-                        <input type="text" class="form-control" id="examplePrice" placeholder="Price">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="exampleEdition" class="col-sm-2 col-form-label">Edition</label>
-                    <div class="pl-2 w-75">
-                        <input type="text" class="form-control" id="exampleEdition" placeholder="Edition">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="exampleISBN" class="col-sm-2 col-form-label">ISBN</label>
-                    <div class="pl-2 w-75">
-                        <input type="text" class="form-control" id="exampleISBN" placeholder="ISBN">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="exampleUniversity" class="col-sm-2 col-form-label">University</label>
-                    <div class="pl-2 w-75">
-                        <input type="text" class="form-control" id="exampleUniversity" placeholder="University">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="exampleSemester" class="col-sm-2 col-form-label">Semester</label>
-                    <div class="pl-2 w-75">
-                        <input type="text" class="form-control" id="exampleSemester" placeholder="Semester">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="exampleCourse" class="col-sm-2 col-form-label">Course</label>
-                    <div class="pl-2 w-75">
-                        <input type="text" class="form-control" id="exampleCourse" placeholder="Course">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="exampleCourse" class="col-sm-2 col-form-label">Description</label>
-                    <div class="pl-2 w-75">
-                        <input type="text" style="height: 100px" class="form-control" id="exampleCourse" />
-                    </div>
-                </div>
-                <label>Choose pictures</label>
-                <br>
-                <input type="file" name="fileupload" value="fileupload" id="fileupload">
+
+                <button type="submit" class="btn btn-primary">Create listing</button>
             </form>
         </div>
         <div class="col-md-5">
             <div class="form-group row">
                 <div class="pl-2 w-75">
-                    <label>Choose pictures</label>
+                    <label>Choose pictures to upload to your listing</label>
                     <br>
                     <input type="file" name="fileupload" value="fileupload" id="fileupload">
                 </div>
             </div>
             <div class="form-group row">
-                <img src="~/roedaal1.jpg" class="img-thumbnail" style=" height:40%; width:40%" />
-                <img src="~/roedaal2.jpg" class=" img-thumbnail" style=" height:40%; width:40%" />
+                <img src="~/Images/roedaal1.jpg" class="img-thumbnail" style=" height:40%; width:40%" />
+                <img src="~/Images/roedaal2.jpg" class=" img-thumbnail" style=" height:40%; width:40%" />
             </div>
             <div class="form-group row">
-                <img src="~/roedaal2.jpg" class="img-thumbnail" style=" height:40%; width:40%" />
-                <img src="~/roedaal1.jpg" class=" img-thumbnail" style=" height:40%; width:40%" />
+                <img src="~/Images/roedaal2.jpg" class="img-thumbnail" style=" height:40%; width:40%" />
+                <img src="~/Images/roedaal1.jpg" class=" img-thumbnail" style=" height:40%; width:40%" />
             </div>
+
 
         </div>
 
