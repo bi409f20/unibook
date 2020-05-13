@@ -28,30 +28,27 @@ namespace unibook.Areas.Identity.Pages.Account
         private readonly UserManager<User> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IHostingEnvironment hostingEnvironment;
-        private readonly UnibookContext _context;
 
         public RegisterModel(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             ILogger<RegisterModel> logger,
-            IHostingEnvironment environment,
-            UnibookContext context)
+            IHostingEnvironment environment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             this.hostingEnvironment = environment;
-            _context = context;
         }
 
         [BindProperty]
         public InputModel Input { get; set; }
 
         [BindProperty]
-        public new User User { set; get; }
+        public User User { set; get; }
 
         [BindProperty]
-        public IFormFile Image { set; get; }
+        public IFormFile ImageNameInput { set; get; }
     
 
     public string ReturnUrl { get; set; }
@@ -104,13 +101,13 @@ namespace unibook.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
 
-                var fileName = GetUniqueName(Image.FileName);
+                var fileName = GetUniqueName(ImageNameInput.FileName);
                 var Images = Path.Combine(hostingEnvironment.WebRootPath, "Images");
                 var filePath = Path.Combine(Images, fileName);
-                this.Image.CopyTo(new FileStream(filePath, FileMode.Create));
-                User.ImageName = fileName; // Set the file name
+                this.ImageNameInput.CopyTo(new FileStream(filePath, FileMode.Create));
+                this.User.ImageName = fileName; // Set the file name
 
-                var user = new User { Email = Input.Email, UserName = Input.Email, Name = Input.Name, University = Input.University, ImageName = Input.ImageName };
+                var user = new User { Email = Input.Email, UserName = Input.Email, Name = Input.Name, University = Input.University, ImageName = filePath};
                 var result = await _userManager.CreateAsync(user, Input.Password);
               
                 if (result.Succeeded)

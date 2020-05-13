@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Images\**" />
     <Compile Remove="Pages\Listing\**" />
+    <Content Remove="Images\**" />
     <Content Remove="Pages\Listing\**" />
+    <EmbeddedResource Remove="Images\**" />
     <EmbeddedResource Remove="Pages\Listing\**" />
+    <None Remove="Images\**" />
     <None Remove="Pages\Listing\**" />
   </ItemGroup>
 
@@ -38,7 +42,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Images\" />
   </ItemGroup>
 
 

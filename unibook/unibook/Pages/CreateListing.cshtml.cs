@@ -86,19 +86,19 @@ namespace unibook.Pages
                         Edition = Input.Edition,
                         ISBN = Input.ISBN,
                     };
-                    var listingcreator = new Listing()
-                    {
-                        Book = book,
-                        User = await _userManager.GetUserAsync(User),
-                        Price = Input.Price,
-                        University = Input.University,
-                        Semester = Input.Semester,
-                        Study = Input.Study,
-                        Description = Input.Description
-                    };
+                }
+                var listingcreator = new Listing()
+                {
+                    Book = book,
+                    User = await _userManager.GetUserAsync(User),
+                    Price = Input.Price,
+                    University = Input.University,
+                    Semester = Input.Semester,
+                    Study = Input.Study,
+                    Description = Input.Description
+                };
                 _context.Listings.Add(listingcreator);
                 await _context.SaveChangesAsync();
-                }
             }
             return Page();
         }
