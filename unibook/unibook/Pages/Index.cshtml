@@ -38,24 +38,30 @@
     </ul>
 </div>
 <div>
-    <h4>Books</h4>
+    <h4>Current listings</h4>
     <hr />
-    <p>@(Model.Books.Count) results</p>
-    @foreach(var book in Model.Books)
+    <p>@(Model.Listings.Count) results</p>
+    @foreach(var listing in Model.Listings)
     {
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => book.ISBN)
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(model => listing.Book.Title)</h5>
+                        <p>
+                            @Html.DisplayNameFor(model => listing.Book.ISBN)<br>
+                            @Html.DisplayFor(model => listing.Book.ISBN)<br>
+                            @Html.DisplayNameFor(model => listing.Book.Author)<br>
+                            @Html.DisplayFor(model => listing.Book.Author)<br>
+                            @Html.DisplayNameFor(model => listing.Book.Edition)<br>
+                            @Html.DisplayFor(model => listing.Book.Edition)<br>
+                        </p>
+
+                        <a href="#" class="btn btn-primary">Go to listing</a>
+                    </div>
+                </div>
             </dt>
-            <dd class="col-sm-2">
-                @Html.DisplayFor(model => book.ISBN)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => book.Title)
-            </dt>
-            <dd class="col-sm-2">
-                @Html.DisplayFor(model => book.Title)
-            </dd>
         </dl>
     }
 </div>

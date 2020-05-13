@@ -23,21 +23,21 @@ namespace unibook.Pages
 
         public void OnGet()
         {
-            Books = _context.Books.ToList(); // SELECT * FROM Books;
+            Listings = _context.Listings.ToList(); // SELECT * FROM Listings;
         }
 
         public void OnPost(string query)
         {
             query = (query ?? "").ToLower();
 
-            Books = _context.Books
-                .Where(b => b.Title.ToLower().Contains(query) || b.ISBN.ToLower().Contains(query) || b.Author.ToLower().Contains(query))
-                .ToList(); // SELECT * FROM Books WHERE title LIKE '%test%';
+            Listings = _context.Listings
+                .Where(b => b.Book.Title.ToLower().Contains(query) || b.Book.ISBN.ToLower().Contains(query) || b.Book.Author.ToLower().Contains(query))
+                .ToList(); // SELECT * FROM Listings WHERE title LIKE '%test%';
         }
 
         public List<Book> Books { get; set; }
         public Listing listing { get; set; }
         public User user { get; set; }
-
+        public List<Listing> Listings { get; private set; }
     }
 }
