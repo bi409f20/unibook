@@ -51,6 +51,18 @@ namespace unibook.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Name")]
             public string Name { get; set; }
+            
+            [Display(Name = "Phone")]
+            public string Phone { get; set; }
+
+            [Display(Name = "Address")]
+            public string Address { get; set; }
+
+            [Display(Name = "University")]
+            public string University { get; set; }
+
+            [Display(Name = "Image")]
+            public string ImageName { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]

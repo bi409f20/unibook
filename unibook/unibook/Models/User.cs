@@ -11,6 +11,8 @@ namespace unibook.Models
         public virtual string Name { get; set; }
         public virtual string Address { get; set; }
         public virtual double Rating { get; set; }
+        public virtual string University { get; set; }
+        public virtual string ImageName { get; set; }
 
         public ICollection<Listing> Listings { get; set; }
     }
