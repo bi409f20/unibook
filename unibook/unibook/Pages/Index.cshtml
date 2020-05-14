@@ -10,7 +10,7 @@
         Search for books:
     </p>
 </div>
-<div class="col-md-auto">
+<div>
     <form asp-controller="Listings" asp-action="=" Index">
         <p>
             <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="query">
@@ -19,11 +19,11 @@
 </div>
 <h4>Current listings</h4>
 <p>@(Model.Listings.Count) Results</p>
-<div class="row" runat="server">
+<div class="row " runat="server" style="margin-left: 0px; margin-right: 0px; width: 1135px;">
 
     @foreach (var listing in Model.Listings)
     {
-        <div class="card" style="width: 17rem;">
+        <div class="card" style="width: 17rem; margin-right: 1%; margin-bottom: 1%; width: 269px";>
             <img class="card-img-top" src="@listing.ListingImage" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">
