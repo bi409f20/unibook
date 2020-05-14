@@ -116,7 +116,7 @@ namespace unibook.Pages
                     Study = Input.Study,
                     Description = Input.Description,
                     BookISBN = Input.ISBN,
-                    ListingImage = filePath
+                    ListingImage = fileName
                 };
                 _context.Listings.Add(listingcreator);
                 await _context.SaveChangesAsync();
