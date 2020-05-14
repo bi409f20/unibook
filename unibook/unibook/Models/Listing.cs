@@ -14,6 +14,8 @@ namespace unibook.Models
         public string Description { get; set; }
         public decimal Price { get; set; }
 
+        public string BookISBN { get; set; }
+
         public User User { get; set; }
         public Book Book { get; set; }
     }
