@@ -107,7 +107,7 @@ namespace unibook.Areas.Identity.Pages.Account
                 this.ImageNameInput.CopyTo(new FileStream(filePath, FileMode.Create));
                 this.User.ImageName = fileName; // Set the file name
 
-                var user = new User { Email = Input.Email, UserName = Input.Email, Name = Input.Name, University = Input.University, ImageName = filePath};
+                var user = new User { Email = Input.Email, UserName = Input.Email, Name = Input.Name, University = Input.University, ImageName = fileName};
                 var result = await _userManager.CreateAsync(user, Input.Password);
               
                 if (result.Succeeded)
