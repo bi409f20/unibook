@@ -19,12 +19,12 @@
 </div>
 <h4>Current listings</h4>
 <p>@(Model.Listings.Count) Results</p>
-<div class="row">
+<div class="row" runat="server">
 
     @foreach (var listing in Model.Listings)
     {
         <div class="card" style="width: 17rem;">
-            <img class="card-img-top" src="~/Images/roedaal1.jpg" alt="Card image cap">
+            <img class="card-img-top" src="@listing.ListingImage" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">
                     @Html.DisplayFor(model => listing.Book.Title)

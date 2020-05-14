@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using unibook.Data;
 using unibook.Models;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 
 namespace unibook.Pages
 {
@@ -16,16 +19,23 @@ namespace unibook.Pages
     {
         private readonly UserManager<User> _userManager;
         private readonly UnibookContext _context;
-        public CreateListingModel(UserManager<User> userManager, UnibookContext context)
+        private readonly IHostingEnvironment hostingEnvironment;
+        public CreateListingModel(UserManager<User> userManager, UnibookContext context, IHostingEnvironment environment)
         {
             _userManager = userManager;
             _context = context;
+            this.hostingEnvironment = environment;
         }
 
         [BindProperty]
         public InputModel Input { get; set; }
 
+        [BindProperty]
+        public Listing Listing { set; get; }
+
         public string ReturnUrl { get; set; }
+        [BindProperty]
+        public IFormFile ListingImageInput { set; get; }
 
         public class InputModel
         {
@@ -64,6 +74,9 @@ namespace unibook.Pages
             [Required]
             [Display(Name = "Description")]
             public string Description { get; set; }
+
+            [Display(Name = "Image")]
+            public string ListingImage { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -88,6 +101,11 @@ namespace unibook.Pages
                     };
                     _context.Books.Add(bookcreator);
                 }
+                var fileName = GetUniqueName(ListingImageInput.FileName);
+                var Images = Path.Combine(hostingEnvironment.WebRootPath, "Images");
+                var filePath = Path.Combine(Images, fileName);
+                this.ListingImageInput.CopyTo(new FileStream(filePath, FileMode.Create));
+                this.Listing.ListingImage = fileName; // Set the file name
                 var listingcreator = new Listing()
                 {
                     Book = book,
@@ -97,12 +115,20 @@ namespace unibook.Pages
                     Semester = Input.Semester,
                     Study = Input.Study,
                     Description = Input.Description,
-                    BookISBN = Input.ISBN
+                    BookISBN = Input.ISBN,
+                    ListingImage = filePath
                 };
                 _context.Listings.Add(listingcreator);
                 await _context.SaveChangesAsync();
             }
             return Page();
+        }
+        private string GetUniqueName(string fileName)
+        {
+            fileName = Path.GetFileName(fileName);
+            return Path.GetFileNameWithoutExtension(fileName)
+                   + "_" + Guid.NewGuid().ToString().Substring(0, 4)
+                   + Path.GetExtension(fileName);
         }
     }
 
