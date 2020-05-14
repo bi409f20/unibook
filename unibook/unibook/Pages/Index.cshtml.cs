@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using unibook.Models;
 using unibook.Data;
-using Microsoft.EntityFrameworkCore.Query;
-using System.Data.Entity;
 
 namespace unibook.Pages
 {
@@ -26,7 +24,6 @@ namespace unibook.Pages
         public void OnGet()
         {
             Listings = _context.Listings.ToList(); // SELECT * FROM Listings;
-            Books = _context.Books.ToList();
         }
 
         public void OnPost(string query)
@@ -34,16 +31,11 @@ namespace unibook.Pages
             query = (query ?? "").ToLower();
 
             Listings = _context.Listings
-                .Where(b => b.Book.Title.ToLower().Contains(query) || 
-                b.Book.ISBN.ToLower().Contains(query) || 
-                b.Book.Author.ToLower().Contains(query) || 
-                b.Study.ToLower().Contains(query))
+                .Where(b => b.Book.Title.ToLower().Contains(query) || b.Book.ISBN.ToLower().Contains(query) || b.Book.Author.ToLower().Contains(query))
                 .ToList(); // SELECT * FROM Listings WHERE title LIKE '%test%';
-            Books = _context.Books
-                .Where(i => i.Author.ToLower().Contains(query)).ToList();
         }
 
-        public List<Book> Books { get; private set; }
+        public List<Book> Books { get; set; }
         public Listing listing { get; set; }
         public User user { get; set; }
         public List<Listing> Listings { get; private set; }

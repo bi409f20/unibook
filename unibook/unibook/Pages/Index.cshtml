@@ -41,7 +41,7 @@
                     </b>
                     @Html.DisplayFor(model => listing.BookISBN)
                 </p>
-                    <a href="#" class="btn btn-primary">Go to listing</a>
+                    <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
             </div>
         </div>
     }

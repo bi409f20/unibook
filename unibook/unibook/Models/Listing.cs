@@ -19,5 +19,10 @@ namespace unibook.Models
 
         public User User { get; set; }
         public Book Book { get; set; }
+
+        public static implicit operator List<object>(Listing v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

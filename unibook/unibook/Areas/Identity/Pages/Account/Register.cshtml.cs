@@ -102,7 +102,7 @@ namespace unibook.Areas.Identity.Pages.Account
             {
 
                 var fileName = GetUniqueName(ImageNameInput.FileName);
-                var Images = Path.Combine(hostingEnvironment.WebRootPath, "Images");
+                var Images = Path.Combine(hostingEnvironment.WebRootPath, "Images/UserImages");
                 var filePath = Path.Combine(Images, fileName);
                 this.ImageNameInput.CopyTo(new FileStream(filePath, FileMode.Create));
                 this.User.ImageName = fileName; // Set the file name

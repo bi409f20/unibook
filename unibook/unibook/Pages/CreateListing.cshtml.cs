@@ -102,7 +102,7 @@ namespace unibook.Pages
                     _context.Books.Add(bookcreator);
                 }
                 var fileName = GetUniqueName(ListingImageInput.FileName);
-                var Images = Path.Combine(hostingEnvironment.WebRootPath, "Images");
+                var Images = Path.Combine(hostingEnvironment.WebRootPath, "Images/ListingImages");
                 var filePath = Path.Combine(Images, fileName);
                 this.ListingImageInput.CopyTo(new FileStream(filePath, FileMode.Create));
                 this.Listing.ListingImage = fileName; // Set the file name
