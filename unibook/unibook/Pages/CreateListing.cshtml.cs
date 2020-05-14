@@ -86,6 +86,7 @@ namespace unibook.Pages
                         Edition = Input.Edition,
                         ISBN = Input.ISBN,
                     };
+                    _context.Books.Add(bookcreator);
                 }
                 var listingcreator = new Listing()
                 {
@@ -95,7 +96,8 @@ namespace unibook.Pages
                     University = Input.University,
                     Semester = Input.Semester,
                     Study = Input.Study,
-                    Description = Input.Description
+                    Description = Input.Description,
+                    BookISBN = Input.ISBN
                 };
                 _context.Listings.Add(listingcreator);
                 await _context.SaveChangesAsync();

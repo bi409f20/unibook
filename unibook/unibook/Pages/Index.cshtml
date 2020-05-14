@@ -17,52 +17,33 @@
         </p>
     </form>
 </div>
+<h4>Current listings</h4>
+<p>@(Model.Listings.Count) Results</p>
+<div class="row">
 
-<div class="mx-auto" style="width: 50%;">
-    <ul class="list-group list-group-horizontal">
-        <li class="list-group-item" style="width:100%">
-            Title:<br />
-            Price:<br />
-            Location:<br />
-        </li>
-        <li class="list-group-item" style="width:100%">
-            Title:<br />
-            Price:<br />
-            Location:<br />
-        </li>
-        <li class="list-group-item" style="width:100%">
-            Title:<br />
-            Price:<br />
-            Location:<br />
-        </li>
-    </ul>
-</div>
-<div>
-    <h4>Current listings</h4>
-    <hr />
-    <p>@(Model.Listings.Count) results</p>
-    @foreach(var listing in Model.Listings)
+    @foreach (var listing in Model.Listings)
     {
-        <dl class="row">
-            <dt class="col-sm-2">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(model => listing.Book.Title)</h5>
-                        <p>
-                            @Html.DisplayNameFor(model => listing.Book.ISBN)<br>
-                            @Html.DisplayFor(model => listing.Book.ISBN)<br>
-                            @Html.DisplayNameFor(model => listing.Book.Author)<br>
-                            @Html.DisplayFor(model => listing.Book.Author)<br>
-                            @Html.DisplayNameFor(model => listing.Book.Edition)<br>
-                            @Html.DisplayFor(model => listing.Book.Edition)<br>
-                        </p>
-
-                        <a href="#" class="btn btn-primary">Go to listing</a>
-                    </div>
-                </div>
-            </dt>
-        </dl>
+        <div class="card" style="width: 17rem;">
+            <img class="card-img-top" src="~/Images/roedaal1.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">
+                    @Html.DisplayFor(model => listing.Book.Title)
+                </h5>
+                <p>
+                    <b>
+                    @Html.DisplayNameFor(model => listing.Price):
+                    </b>
+                    @Html.DisplayFor(model => listing.Price) kr
+                </p>
+                <p>
+                    <b>
+                    @Html.DisplayNameFor(model => listing.BookISBN):
+                    </b>
+                    @Html.DisplayFor(model => listing.BookISBN)
+                </p>
+                    <a href="#" class="btn btn-primary">Go to listing</a>
+            </div>
+        </div>
     }
 </div>
 <div>
