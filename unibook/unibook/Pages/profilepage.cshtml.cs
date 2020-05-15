@@ -19,14 +19,16 @@ namespace unibook.Pages
         }
         public async Task<IActionResult> OnGetAsync(string id)
         {
+            Listings = await _context.Listings.Include(l => l.Book).Where(l => l.UserId == id).ToListAsync();
             User = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
-
-            if (User == null)
+            if (Listings == null)
                 {
                     return RedirectToPage("./Index");
                 }
                 return Page();
         }
         public User User { get; set; }
+        public Listing Listing { get; set; }
+        public List<Listing> Listings { get; private set; }
     }
 }

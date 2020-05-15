@@ -13,12 +13,12 @@
                 <img class="card-img-top" src="/Images/UserImages/@Model.User.ImageName" alt="Card image cap">
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Name: @Html.DisplayFor(model => model.User.Name)</li>
-                        <li class="list-group-item">Address: @Html.DisplayFor(model => model.User.Address)</li>
-                        <li class="list-group-item">Phone: @Html.DisplayFor(model => model.User.PhoneNumber) </li>
-                        <li class="list-group-item">E-mail: @Html.DisplayFor(model => model.User.Email)</li>
-                        <li class="list-group-item">University: @Html.DisplayFor(model => model.User.University)</li>
-                        <li class="list-group-item">Rating: @Html.DisplayFor(model => model.User.Rating)</li>
+                        <li class="list-group-item">Name: <br> @Html.DisplayFor(model => model.User.Name)</li>
+                        <li class="list-group-item">Address: <br> @Html.DisplayFor(model => model.User.Address)</li>
+                        <li class="list-group-item">Phone: <br> @Html.DisplayFor(model => model.User.PhoneNumber) </li>
+                        <li class="list-group-item">E-mail: <br> @Html.DisplayFor(model => model.User.Email)</li>
+                        <li class="list-group-item">University: <br> @Html.DisplayFor(model => model.User.University)</li>
+                        <li class="list-group-item">Rating: <br> @Html.DisplayFor(model => model.User.Rating)</li>
                     </ul>
                     <br>
                     <a href="#" class="btn btn-primary">Edit profile</a>
@@ -28,31 +28,33 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-8">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Book</h5>
-                    <p class="card-text">Very nice book broski</p>
-                    <a href="#" class="btn btn-primary">Edit listing</a>
-                </div>
+            <div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
+
+                @foreach (var listing in Model.User.Listings)
+                {
+                    <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
+                        <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @Html.DisplayFor(model => listing.Book.Title)
+                            </h5>
+                            <p>
+                                <b>
+                                    @Html.DisplayNameFor(model => listing.Price):
+                                </b>
+                                @Html.DisplayFor(model => listing.Price) kr
+                            </p>
+                            <p>
+                                <b>
+                                    @Html.DisplayNameFor(model => listing.BookISBN):
+                                </b>
+                                @Html.DisplayFor(model => listing.BookISBN)
+                            </p>
+                            <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
+                        </div>
+                    </div>
+                }
             </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Book</h5>
-                    <p class="card-text">Very nice book broski</p>
-                    <a href="#" class="btn btn-primary">Edit listing</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Book</h5>
-                    <p class="card-text">Very nice book broski</p>
-                    <a href="#" class="btn btn-primary">Edit listing</a>
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>
