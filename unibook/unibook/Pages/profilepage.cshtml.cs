@@ -19,9 +19,9 @@ namespace unibook.Pages
         }
         public async Task<IActionResult> OnGetAsync(string id)
         {
-                User = await _context.Users.Include(l => l.Id).FirstOrDefaultAsync(l => l.Id == id);
+            User = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-                if (User == null)
+            if (User == null)
                 {
                     return RedirectToPage("./Index");
                 }

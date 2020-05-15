@@ -10,15 +10,15 @@
     <div class="row">
         <div class="col-md-3">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="~/jolle.png" alt="Card image cap">
+                <img class="card-img-top" src="/Images/UserImages/@Model.User.ImageName" alt="Card image cap">
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Name</li>
-                        <li class="list-group-item">Address</li>
-                        <li class="list-group-item">Phone</li>
-                        <li class="list-group-item">E-mail</li>
-                        <li class="list-group-item">University</li>
-                        <li class="list-group-item">Rating</li>
+                        <li class="list-group-item">Name: @Html.DisplayFor(model => model.User.Name)</li>
+                        <li class="list-group-item">Address: @Html.DisplayFor(model => model.User.Address)</li>
+                        <li class="list-group-item">Phone: @Html.DisplayFor(model => model.User.PhoneNumber) </li>
+                        <li class="list-group-item">E-mail: @Html.DisplayFor(model => model.User.Email)</li>
+                        <li class="list-group-item">University: @Html.DisplayFor(model => model.User.University)</li>
+                        <li class="list-group-item">Rating: @Html.DisplayFor(model => model.User.Rating)</li>
                     </ul>
                     <br>
                     <a href="#" class="btn btn-primary">Edit profile</a>
