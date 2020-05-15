@@ -40,6 +40,27 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Images\73057092_496732927843907_8755573433154142208_n_1c99.png" />
+    <None Include="wwwroot\Images\73057092_496732927843907_8755573433154142208_n_37d3.png" />
+    <None Include="wwwroot\Images\aGGG_5b3b.png" />
+    <None Include="wwwroot\Images\ListingImages\aGGG_3c6d.png" />
+    <None Include="wwwroot\Images\ListingImages\csharp.jpg" />
+    <None Include="wwwroot\Images\ListingImages\database.jpg" />
+    <None Include="wwwroot\Images\ListingImages\f1_1509.jpg" />
+    <None Include="wwwroot\Images\ListingImages\f1_3fda.jpg" />
+    <None Include="wwwroot\Images\ListingImages\f1_afa6.jpg" />
+    <None Include="wwwroot\Images\ListingImages\jolle.png" />
+    <None Include="wwwroot\Images\ListingImages\roedaal1.jpg" />
+    <None Include="wwwroot\Images\ListingImages\roedaal2.jpg" />
+    <None Include="wwwroot\Images\ListingImages\sql.jpg" />
+    <None Include="wwwroot\Images\logo_8573.jpg" />
+    <None Include="wwwroot\Images\SiteImages\logo.jpg" />
+    <None Include="wwwroot\Images\UserImages\Screenshot_1_4d84.jpg" />
+    <None Include="wwwroot\Images\UserImages\Screenshot_1_811b.jpg" />
+    <None Include="wwwroot\Images\UserImages\Screenshot_1_a8a3.jpg" />
+  </ItemGroup>
+
 
 
 </Project>
