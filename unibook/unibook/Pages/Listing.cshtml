@@ -24,15 +24,14 @@
             </ul>
         </div>
         <div class="col-sm-3">
-            
             <div class="card" style="width: 100%;">
                 <div class="card-header">
-                   Seller: <a asp-page="./profilepage" asp-route-id="@Model.Listing.UserId">@Html.DisplayFor(model => model.User.Name)</a>
+                    Seller: <a asp-page="./profilepage" asp-route-id="@Model.Listing.UserId">@Html.DisplayFor(model => model.Listing.User.Name)</a>
                 </div>
-                <img src="https://i.pinimg.com/originals/5d/df/5f/5ddf5f3c3401f10634bd56d529e4bde1.jpg" alt="billed" style="max-width: 100px; max-height:100px;">
+                <img class="card-img-top" src="/Images/UserImages/@Model.Listing.User.ImageName" alt="billed" style="max-width: 100px; max-height:100px;">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Name: @Html.DisplayFor(model => model.User.Name)</li>
-                    <li class="list-group-item">University @Html.DisplayFor(model => model.User.University)</li>
+                    <li class="list-group-item">Name: @Html.DisplayFor(model => model.Listing.User.UserName)</li>
+                    <li class="list-group-item">University @Html.DisplayFor(model => model.Listing.User.University)</li>
                 </ul>
             </div>
         </div>

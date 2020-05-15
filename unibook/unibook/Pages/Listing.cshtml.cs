@@ -21,8 +21,7 @@ namespace unibook.Pages
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            Listing = await _context.Listings.Include(l => l.Book).FirstOrDefaultAsync(l => l.Id == id);
-            //User = await _context.Users.Include(s => s.Name).FirstOrDefaultAsync();
+            Listing = await _context.Listings.Include(l => l.Book).Include(l => l.User).FirstOrDefaultAsync(l => l.Id == id);
 
             if (Listing == null) 
             {
