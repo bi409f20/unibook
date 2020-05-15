@@ -8,35 +8,34 @@
 
 <div class="container">
     <div class="row">
-            <div class="col-sm">
-                <h1>@Html.DisplayFor(model => model.Listing.Book.Title)</h1>
-                <h4>@Html.DisplayFor(model => model.Listing.Price)</h4>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Book_of_Mormon_danish.jpg" alt="billed" style="max-width: 180px">
-                <ul class="list-group">
-                    <li class="list-group-item">Description: <br> @Html.DisplayFor(model => model.Listing.Description)</li>
-                    <li class="list-group-item">ISBN: <br> @Html.DisplayFor(model => model.Listing.Book.ISBN)</li>
-                    <li class="list-group-item">Author: <br> @Html.DisplayFor(model => model.Listing.Book.Author)</li>
-                    <li class="list-group-item">Edition: <br> @Html.DisplayFor(model => model.Listing.Book.Edition)</li>
-                    <li class="list-group-item">University: <br> @Html.DisplayFor(model => model.Listing.University)</li>
-                    <li class="list-group-item">Study:  <br> @Html.DisplayFor(model => model.Listing.Study)</li>
-                    <li class="list-group-item">Price: <br> @Html.DisplayFor(model => model.Listing.Price)</li>
+        <div class="col-sm-3">
+            <img style="border: 3px solid #000000; max-width: 300px" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Book_of_Mormon_danish.jpg" alt="billed">
+        </div>
+        <div class="col-sm-4">
+            <ul>
+                <li class="list-group-item"><b>Listing Information</b></li>
+                <li class="list-group-item"><b>Title:</b> @Html.DisplayFor(model => model.Listing.Book.Title)</li>
+                <li class="list-group-item"><b>Price: </b> @Html.DisplayFor(model => model.Listing.Price)</li>
+                <li class="list-group-item"><b>ISBN:</b> @Html.DisplayFor(model => model.Listing.Book.ISBN)</li>
+                <li class="list-group-item"><b>Author:</b> @Html.DisplayFor(model => model.Listing.Book.Author)</li>
+                <li class="list-group-item"><b>Edition:</b> @Html.DisplayFor(model => model.Listing.Book.Edition)</li>
+                <li class="list-group-item"><b>University:</b> @Html.DisplayFor(model => model.Listing.University)</li>
+                <li class="list-group-item"><b>Study:</b> @Html.DisplayFor(model => model.Listing.Study)</li>
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            
+            <div class="card" style="width: 100%;">
+                <div class="card-header">
+                   Seller: <a asp-page="./profilepage" asp-route-id="@Model.Listing.UserId">@Html.DisplayFor(model => model.User.Name)</a>
+                </div>
+                <img src="https://i.pinimg.com/originals/5d/df/5f/5ddf5f3c3401f10634bd56d529e4bde1.jpg" alt="billed" style="max-width: 100px; max-height:100px;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name: @Html.DisplayFor(model => model.User.Name)</li>
+                    <li class="list-group-item">University @Html.DisplayFor(model => model.User.University)</li>
                 </ul>
             </div>
-        <div class="col-sm">
-        </div>
-        <div class="col-sm">
-            <h4> Seller </h4>
-            <img src="https://i.pinimg.com/originals/5d/df/5f/5ddf5f3c3401f10634bd56d529e4bde1.jpg" alt="billed" style="max-width: 180px"></li>
-            <ul style="list-style: none;">
-                <li class="list-group-item">Name: @Html.DisplayFor(model => model.User.Name)</li>
-                <li class="list-group-item">Email: @Html.DisplayFor(model => model.User.Email)</li>
-                <li class="list-group-item">Phone: @Html.DisplayFor(model => model.User.PhoneNumber)</li>
-                <li class="list-group-item">Address: @Html.DisplayFor(model => model.User.Address)</li>
-                <li class="list-group-item">Rating: @Html.DisplayFor(model => model.User.Rating)</li>
-                <li class="list-group-item">University @Html.DisplayFor(model => model.User.University)</li>
-            </ul>
         </div>
     </div>
 </div>
-
 

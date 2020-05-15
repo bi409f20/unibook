@@ -14,6 +14,7 @@ namespace unibook.Data
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Listing> Listings { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
