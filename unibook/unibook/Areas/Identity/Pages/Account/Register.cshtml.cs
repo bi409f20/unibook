@@ -100,16 +100,18 @@ namespace unibook.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-
-                var fileName = GetUniqueName(ImageNameInput.FileName);
+                var fileName = ImageNameInput == null ? "DefaultImage/default-avatar.jpg" : GetUniqueName(ImageNameInput.FileName);
                 var Images = Path.Combine(hostingEnvironment.WebRootPath, "Images/UserImages");
-                var filePath = Path.Combine(Images, fileName);
-                this.ImageNameInput.CopyTo(new FileStream(filePath, FileMode.Create));
-                this.User.ImageName = fileName; // Set the file name
+                if (ImageNameInput != null)
+                {
+                    var filePath = Path.Combine(Images, fileName);
+                    this.ImageNameInput.CopyTo(new FileStream(filePath, FileMode.Create));
+                    this.User.ImageName = fileName; // Set the file name
+                }
 
                 var user = new User { Email = Input.Email, UserName = Input.Email, Name = Input.Name, University = Input.University, ImageName = fileName};
                 var result = await _userManager.CreateAsync(user, Input.Password);
-              
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
