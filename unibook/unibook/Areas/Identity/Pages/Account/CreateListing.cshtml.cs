@@ -101,12 +101,16 @@ namespace unibook.Pages
                     };
                     _context.Books.Add(bookcreator);
                 }
-                var fileName = GetUniqueName(ListingImageInput.FileName);
+                var fileName = ListingImageInput == null ? "DefaultListing/Book-Placeholder.png" : GetUniqueName(ListingImageInput.FileName);
                 var Images = Path.Combine(hostingEnvironment.WebRootPath, "Images/ListingImages");
-                var filePath = Path.Combine(Images, fileName);
-                this.ListingImageInput.CopyTo(new FileStream(filePath, FileMode.Create));
-                this.Listing.ListingImage = fileName; // Set the file name
+                if (ListingImageInput != null)
+                {
+                    var filePath = Path.Combine(Images, fileName);
+                    this.ListingImageInput.CopyTo(new FileStream(filePath, FileMode.Create));
+                    this.Listing.ListingImage = fileName; // Set the file name
+                }
                 var listingcreator = new Listing()
+
                 {
                     Book = book,
                     User = await _userManager.GetUserAsync(User),

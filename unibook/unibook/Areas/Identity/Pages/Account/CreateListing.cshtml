@@ -43,7 +43,17 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.University"></label>
-                    <input asp-for="Input.University" class="form-control" />
+                    <select asp-for="Input.University" class="form-control">
+                        <option>Aalborg University </option>
+                        <option>Aarhus University </option>
+                        <option>Copenhagen Business School</option>
+                        <option>Copenhagen University </option>
+                        <option>IT University of Copenhagen </option>
+                        <option>Roskilde University </option>
+                        <option>Technical University of Denmark</option>
+                        <option>University of Southern Denmark</option>
+                    </select>
+
                     <span asp-validation-for="Input.University" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -57,26 +67,27 @@
                     <input style="height: 175px;" asp-for="Input.Description" class="form-control" />
                     <span asp-validation-for="Input.Description" class="text-danger"></span>
                 </div>
-                        <div class="form-group">
-                            <label asp-for="ListingImageInput">Add a picture of the book</label>
-                            <input type="file" asp-for="ListingImageInput" />
-                        </div>
+                <div class="form-group">
+                    <label asp-for="ListingImageInput">Add a picture of the book</label> <br>
+                    <input type="file" asp-for="ListingImageInput" />
+                </div>
                 <button type="submit" class="btn btn-primary">Create listing</button>
             </form>
         </div>
-        <div class="col-md-5">
-            <div class="form-group row">
-                <img src="~/Images/roedaal1.jpg" class="img-thumbnail" style=" height:40%; width:40%" />
-                <img src="~/Images/roedaal2.jpg" class=" img-thumbnail" style=" height:40%; width:40%" />
-            </div>
-            <div class="form-group row">
-                <img src="~/Images/roedaal2.jpg" class="img-thumbnail" style=" height:40%; width:40%" />
-                <img src="~/Images/roedaal1.jpg" class=" img-thumbnail" style=" height:40%; width:40%" />
-            </div>
-
-
+        <!-- Billederne fra CreateListing var her, ved ikke om de skal bruges til noget, rotter
+    <div class="col-md-5">
+        <div class="form-group row">
+            <img src="~/Images/roedaal1.jpg" class="img-thumbnail" style=" height:40%; width:40%" />
+            <img src="~/Images/roedaal2.jpg" class=" img-thumbnail" style=" height:40%; width:40%" />
+        </div>
+        <div class="form-group row">
+            <img src="~/Images/roedaal2.jpg" class="img-thumbnail" style=" height:40%; width:40%" />
+            <img src="~/Images/roedaal1.jpg" class=" img-thumbnail" style=" height:40%; width:40%" />
         </div>
 
+
+    </div>
+        -->
 
     </div>
 
