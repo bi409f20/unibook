@@ -10,18 +10,21 @@
     <div class="row">
         <div class="col-md-3">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/Images/UserImages/@Model.User.ImageName" alt="Card image cap">
+                <img class="card-img-top" src="/Images/UserImages/@Model.Profile.ImageName" alt="Card image cap">
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Name: <br> @Html.DisplayFor(model => model.User.Name)</li>
-                        <li class="list-group-item">Address: <br> @Html.DisplayFor(model => model.User.Address)</li>
-                        <li class="list-group-item">Phone: <br> @Html.DisplayFor(model => model.User.PhoneNumber) </li>
-                        <li class="list-group-item">E-mail: <br> @Html.DisplayFor(model => model.User.Email)</li>
-                        <li class="list-group-item">University: <br> @Html.DisplayFor(model => model.User.University)</li>
-                        <li class="list-group-item">Rating: <br> @Html.DisplayFor(model => model.User.Rating)</li>
+                        <li class="list-group-item">Name: <br> @Html.DisplayFor(model => model.Profile.Name)</li>
+                        <li class="list-group-item">Address: <br> @Html.DisplayFor(model => model.Profile.Address)</li>
+                        <li class="list-group-item">Phone: <br> @Html.DisplayFor(model => model.Profile.PhoneNumber) </li>
+                        <li class="list-group-item">E-mail: <br> @Html.DisplayFor(model => model.Profile.Email)</li>
+                        <li class="list-group-item">University: <br> @Html.DisplayFor(model => model.Profile.University)</li>
+                        <li class="list-group-item">Rating: <br> @Html.DisplayFor(model => model.Profile.Rating)</li>
                     </ul>
-                    <br>
-                    <a href="#" class="btn btn-primary">Edit profile</a>
+                    @if (Model.ShowEdit)
+                    {
+                        <br>
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-primary">Edit profile</a>
+                    }
                 </div>
             </div>
         </div>
@@ -30,7 +33,7 @@
         <div class="col-md-8">
             <div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
 
-                @foreach (var listing in Model.User.Listings)
+                @foreach (var listing in Model.Profile.Listings)
                 {
                     <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
                         <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
@@ -55,9 +58,9 @@
                     </div>
                 }
             </div>
-    </div>
+        </div>
 
-</div>
+    </div>
 
 
 

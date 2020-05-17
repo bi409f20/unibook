@@ -69,8 +69,16 @@ namespace unibook.Areas.Identity.Pages.Account
             [Display(Name = "Phone")]
             public string Phone { get; set; }
 
+            [Display(Name = "City")]
+            public string City { get; set; }
+            [Display(Name = "Postal code")]
+            public string PostalCode { get; set; }
+
             [Display(Name = "Address")]
             public string Address { get; set; }
+
+            [Display(Name = "Phone number")]
+            public string PhoneNumber { get; set; }
 
             [Display(Name = "University")]
             public string University { get; set; }
@@ -109,7 +117,7 @@ namespace unibook.Areas.Identity.Pages.Account
                     this.User.ImageName = fileName; // Set the file name
                 }
 
-                var user = new User { Email = Input.Email, UserName = Input.Email, Name = Input.Name, University = Input.University, ImageName = fileName};
+                var user = new User { Email = Input.Email, UserName = Input.Email, Name = Input.Name, University = Input.University, City = Input.City, Address = Input.Address, PostalCode = Input.PostalCode, ImageName = fileName};
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
