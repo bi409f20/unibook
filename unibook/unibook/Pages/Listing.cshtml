@@ -26,7 +26,7 @@
         <div class="col-sm-3">
             <div class="card" style="width: 100%;">
                 <div class="card-header">
-                    Seller: <a asp-page="./profilepage" asp-route-id="@Model.Listing.UserId">@Html.DisplayFor(model => model.Listing.User.Name)</a>
+                    Seller: <a asp-page="./ProfilePage" asp-route-id="@Model.Listing.UserId">@Html.DisplayFor(model => model.Listing.User.Name)</a>
                 </div>
                 <img class="card-img-top" src="/Images/UserImages/@Model.Listing.User.ImageName" alt="billed" style="max-width: 100px; max-height:100px;">
                 <ul class="list-group list-group-flush">
