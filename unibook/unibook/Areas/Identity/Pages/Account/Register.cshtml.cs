@@ -65,9 +65,6 @@ namespace unibook.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Name")]
             public string Name { get; set; }
-            
-            [Display(Name = "Phone")]
-            public string Phone { get; set; }
 
             [Display(Name = "City")]
             public string City { get; set; }
