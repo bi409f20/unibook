@@ -16,15 +16,42 @@
                 <input asp-for="Username" class="form-control" disabled />
             </div>
             <div class="form-group">
+                <label asp-for="Input.Name"></label>
+                <input asp-for="Input.Name" class="form-control" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Input.PhoneNumber"></label>
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Input.City"></label>
+                <input asp-for="Input.City" class="form-control" />
+                <span asp-validation-for="Input.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PostalCode"></label>
+                <input asp-for="Input.PostalCode" class="form-control" />
+                <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Address"></label>
+                <input asp-for="Input.Address" class="form-control" />
+                <span asp-validation-for="Input.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.University"></label>
+                <input asp-for="Input.University" class="form-control" />
+                <span asp-validation-for="Input.University" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageNameInput">Change profile picture</label>
+                <input type="file" asp-for="ImageNameInput" />
+            </div>
             <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
             <a href="\Identity\Account\Manage\ChangePassword">Change Password</a>
             <a href="\Identity\Account\Manage\PersonalData">PersonalData</a>
-
-
         </form>
     </div>
 </div>
