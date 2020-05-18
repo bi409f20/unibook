@@ -15,6 +15,7 @@ namespace unibook.Data
         public DbSet<Book> Books { get; set; }
         public DbSet<Listing> Listings { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Ratings> Ratings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,9 +24,11 @@ namespace unibook.Data
             modelBuilder.Entity<Book>().ToTable("Books");
             modelBuilder.Entity<Listing>().ToTable("Listings");
             modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<Ratings>().ToTable("Ratings");
 
             modelBuilder.ApplyConfiguration(new BookConfiguration());
             modelBuilder.ApplyConfiguration(new ListingConfiguration());
+            modelBuilder.ApplyConfiguration(new RatingsConfiguration());
         }
 
         private class ListingConfiguration : IEntityTypeConfiguration<Listing>
@@ -42,6 +45,15 @@ namespace unibook.Data
             public void Configure(EntityTypeBuilder<Book> builder)
             {
                 builder.HasKey(b => b.ISBN);
+            }
+        }
+
+        private class RatingsConfiguration : IEntityTypeConfiguration<Ratings>
+        {
+            public void Configure(EntityTypeBuilder<Ratings> builder)
+            {
+                builder.HasKey(r => r.RatingId);
+                builder.HasOne(r => r.User).WithMany(r => r.Ratings);
             }
         }
     }

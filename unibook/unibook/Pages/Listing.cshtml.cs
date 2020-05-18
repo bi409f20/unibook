@@ -8,15 +8,26 @@ using Microsoft.Extensions.Logging;
 using unibook.Models;
 using unibook.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace unibook.Pages
 {
     public class ListingModel : PageModel
     {
         private readonly UnibookContext _context;
-        public ListingModel(UnibookContext context)
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+
+
+        public ListingModel(UnibookContext context, 
+            SignInManager<User> signInManager, 
+            UserManager<User> userManager)
+
+
         {
             _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public async Task<IActionResult> OnGetAsync(int id)
