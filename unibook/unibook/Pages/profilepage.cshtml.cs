@@ -36,17 +36,18 @@ namespace unibook.Pages
         {
             await LoadProfileAsync(id);
             if (Listings == null)
-                {
-                    return RedirectToPage("./Index");
-                }
-                return Page();
+            {
+                return RedirectToPage("./Index");
+            }
+            return Page();
         }
 
         private async Task LoadProfileAsync(string id)
         {
-            Profile = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            Profile = await _context.Users.Include(u => u.Ratings).FirstOrDefaultAsync(u => u.Id == id);
             var ownUser = await _userManager.GetUserAsync(User);
             ShowEdit = ownUser.Id.Equals(id);
+            ShowRating = !(await _context.Ratings.AnyAsync(r => r.UserId == id && r.RaterId == ownUser.Id));
             Listings = await _context.Listings.Include(l => l.Book).Where(l => l.UserId == id).ToListAsync();
         }
 
@@ -57,16 +58,19 @@ namespace unibook.Pages
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                    var ratingcreator = new Ratings()
-                    {
-                        Rating = Input.Rating,
-                        UserId = Profile.Id,
-                    };
-                    _context.Ratings.Add(ratingcreator);
-                    await _context.SaveChangesAsync();
+                var ratingcreator = new Ratings()
+                {
+                    Rating = Input.Rating,
+                    UserId = Profile.Id,
+                    Rater = await _userManager.GetUserAsync(User)
+                };
+                _context.Ratings.Add(ratingcreator);
+                await _context.SaveChangesAsync();
             }
             return Page();
         }
+
+        public bool ShowRating { get; set; }
         public Ratings Rating { get; set; }
         public User Profile { get; set; }
         public Listing Listing { get; set; }

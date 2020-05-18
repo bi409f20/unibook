@@ -14,8 +14,7 @@ namespace unibook.Models
         public virtual string ImageName { get; set; }
         public virtual string City { get; set; }
         public virtual string PostalCode {get; set;}
-        public double Rating => Ratings.Select(r => r.Rating).Average();
-
+        public double Rating => Ratings.Any() ? Ratings.Select(r => r.Rating).Average() : 0;
 
         public ICollection<Listing> Listings { get; set; }
         public ICollection<Ratings> Ratings { get; set; }

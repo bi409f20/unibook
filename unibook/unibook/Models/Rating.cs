@@ -10,7 +10,9 @@ namespace unibook.Models
         public int RatingId { get; set; }
         public int Rating { get; set; }
         public string UserId { get; set; } 
+        public string RaterId { get; set; }
 
         public User User { get; set; }    
+        public User Rater { get; set; }    
     }
 }

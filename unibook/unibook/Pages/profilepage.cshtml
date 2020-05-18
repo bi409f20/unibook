@@ -19,7 +19,7 @@
                         <li class="list-group-item">University: <br> @Html.DisplayFor(model => model.Profile.University)</li>
                         <li class="list-group-item">Rating: <br> @Html.DisplayFor(model => model.Profile.Rating)</li>
                     </ul>
-                    @if (Model.ShowEdit == false)
+                    @if (!Model.ShowEdit && Model.ShowRating)
                     {
                         <form asp-route-id="@Model.Profile.Id" method="post" enctype="multipart/form-data">
                             <div class="form-group">
