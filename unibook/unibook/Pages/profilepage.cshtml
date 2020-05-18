@@ -19,22 +19,22 @@
                         <li class="list-group-item">University: <br> @Html.DisplayFor(model => model.Profile.University)</li>
                         <li class="list-group-item">Rating: <br> @Html.DisplayFor(model => model.Profile.Rating)</li>
                     </ul>
-                        @if (Model.ShowEdit == false)
-                        {
-                <form asp-route-returnUrl="@Model.Profile.Id" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label asp-for="Input.Rating"> Rate this user</label>
-                            <select asp-for="Input.Rating" class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Rate</button>
-                    </form>
-                        }
+                    @if (Model.ShowEdit == false)
+                    {
+                        <form asp-route-id="@Model.Profile.Id" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label asp-for="Input.Rating"> Rate this user</label>
+                                <select asp-for="Input.Rating" class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Rate</button>
+                        </form>
+                    }
                     @if (Model.ShowEdit)
                     {
                         <br>
@@ -47,31 +47,30 @@
         </div>
         <div class="col-md-8">
             <div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
-
-                @foreach (var listing in Model.Profile.Listings)
-                {
-                    <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
-                        <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                @Html.DisplayFor(model => listing.Book.Title)
-                            </h5>
-                            <p>
-                                <b>
-                                    @Html.DisplayNameFor(model => listing.Price):
-                                </b>
-                                @Html.DisplayFor(model => listing.Price) kr
-                            </p>
-                            <p>
-                                <b>
-                                    @Html.DisplayNameFor(model => listing.BookISBN):
-                                </b>
-                                @Html.DisplayFor(model => listing.BookISBN)
-                            </p>
-                            <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
+                    @foreach (var listing in Model.Profile.Listings)
+                    {
+                        <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
+                            <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    @Html.DisplayFor(model => listing.Book.Title)
+                                </h5>
+                                <p>
+                                    <b>
+                                        @Html.DisplayNameFor(model => listing.Price):
+                                    </b>
+                                    @Html.DisplayFor(model => listing.Price) kr
+                                </p>
+                                <p>
+                                    <b>
+                                        @Html.DisplayNameFor(model => listing.BookISBN):
+                                    </b>
+                                    @Html.DisplayFor(model => listing.BookISBN)
+                                </p>
+                                <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
+                            </div>
                         </div>
-                    </div>
-                }
+                    }
             </div>
         </div>
 

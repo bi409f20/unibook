@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using unibook.Data;
 
 namespace unibook.Migrations
 {
     [DbContext(typeof(UnibookContext))]
-    partial class UnibookContextModelSnapshot : ModelSnapshot
+    [Migration("20200518142213_ratingavg1")]
+    partial class ratingavg1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

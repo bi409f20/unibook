@@ -34,9 +34,6 @@ namespace unibook.Pages
         }
         public async Task<IActionResult> OnGetAsync(string id)
         {
-            var ownUser = await _userManager.GetUserAsync(User);
-            ShowEdit = ownUser.Id.Equals(id);
-            Listings = await _context.Listings.Include(l => l.Book).Where(l => l.UserId == id).ToListAsync();
             await LoadProfileAsync(id);
             if (Listings == null)
                 {
@@ -48,6 +45,9 @@ namespace unibook.Pages
         private async Task LoadProfileAsync(string id)
         {
             Profile = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            var ownUser = await _userManager.GetUserAsync(User);
+            ShowEdit = ownUser.Id.Equals(id);
+            Listings = await _context.Listings.Include(l => l.Book).Where(l => l.UserId == id).ToListAsync();
         }
 
         public async Task<IActionResult> OnPostAsync(string id, string returnUrl = null)
@@ -57,17 +57,13 @@ namespace unibook.Pages
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var rating = await _context.Ratings.FirstOrDefaultAsync(r => r.Rating == Input.Rating);
-                if (rating == null)
-                {
                     var ratingcreator = new Ratings()
                     {
                         Rating = Input.Rating,
-                        User = await _userManager.GetUserAsync(User),
+                        UserId = Profile.Id,
                     };
                     _context.Ratings.Add(ratingcreator);
                     await _context.SaveChangesAsync();
-                }
             }
             return Page();
         }
