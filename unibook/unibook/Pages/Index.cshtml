@@ -4,22 +4,22 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Unibook</h1>
-    <p>
-        Search for books:
-    </p>
-</div>
-<div class="col-md-auto">
-    <form asp-controller="Listings" asp-action="=" Index">
+    <div class="text-center">
+        <h1 class="display-4">Unibook</h1>
         <p>
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="query">
+            Search for books:
         </p>
-    </form>
-</div>
-<p>@(Model.Listings.Count()) Results</p>
-<h4>Recent listings from Aalborg University</h4>
-<br>
+    </div>
+    <div class="col-md" style="padding-left: 0%; padding-right: 1%;">
+        <form asp-controller="Listings" asp-action="=" Index">
+            <p>
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="query">
+            </p>
+        </form>
+    </div>
+    <p>@(Model.Listings.Count()) Results</p>
+    <h4>Recent listings from Aalborg University</h4>
+    <br>
 <div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
 
     @foreach (var listing in Model.Listings.Where(l => l.University == "Aalborg University"))

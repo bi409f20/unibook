@@ -17,24 +17,25 @@ namespace unibook.Pages
         private readonly UnibookContext _context;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-
-
-        public ListingModel(UnibookContext context, 
-            SignInManager<User> signInManager, 
+        public ListingModel(UnibookContext context,
+            SignInManager<User> signInManager,
             UserManager<User> userManager)
-
-
         {
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
+        private async Task LoadProfileAsync(string id)
+        {
+            var ownUser = await _userManager.GetUserAsync(User);
+            ShowEdit = ownUser.Id.Equals(id);
+        }
         public async Task<IActionResult> OnGetAsync(int id)
         {
             Listing = await _context.Listings.Include(l => l.Book).Include(l => l.User).FirstOrDefaultAsync(l => l.Id == id);
-
-            if (Listing == null) 
+            var userid = Listing.UserId;
+            await LoadProfileAsync(userid);
+            if (Listing == null)
             {
                 return RedirectToPage("./Index");
             }
@@ -46,8 +47,9 @@ namespace unibook.Pages
         {
         }
 
-        public User User { get; set; }
+        public User Profile { get; set; }
         public Listing Listing { get; set; }
         public List<Listing> Listings { get; private set; }
+        public bool ShowEdit { get; set; }
     }
 }

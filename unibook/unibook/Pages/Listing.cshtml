@@ -8,12 +8,9 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-3">
-            <img style="border: 3px solid #000000; max-width: 300px" src="/Images/ListingImages/@Model.Listing.ListingImage" alt="billed">
-        </div>
         <div class="col-sm-4">
-            <ul>
-                <li class="list-group-item"><b>Listing Information</b></li>
+            <ul style="padding-left: 0%">
+                <li class="list-group-item"> <b>Listing Information</b> </li>
                 <li class="list-group-item"><b>Title:</b> @Html.DisplayFor(model => model.Listing.Book.Title)</li>
                 <li class="list-group-item"><b>Price: </b> @Html.DisplayFor(model => model.Listing.Price)</li>
                 <li class="list-group-item"><b>ISBN:</b> @Html.DisplayFor(model => model.Listing.Book.ISBN)</li>
@@ -22,19 +19,30 @@
                 <li class="list-group-item"><b>University:</b> @Html.DisplayFor(model => model.Listing.University)</li>
                 <li class="list-group-item"><b>Study:</b> @Html.DisplayFor(model => model.Listing.Study)</li>
             </ul>
+            @if (Model.ShowEdit)
+            {
+                <a asp-page="./EditListing" asp-route-id="@Model.Listing.Id" class="btn btn-primary">Edit Listing</a>
+            }
         </div>
-        <div class="col-sm-3">
-            <div class="card" style="width: 100%;">
-                <div class="card-header">
+        <div class="col-sm-4">
+            <img style="border: 3px solid #000000; height: 412px; width: 340px" src="/Images/ListingImages/@Model.Listing.ListingImage" alt="billed">
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header" >
                     Seller: <a asp-page="./ProfilePage" asp-route-id="@Model.Listing.UserId">@Html.DisplayFor(model => model.Listing.User.Name)</a>
                 </div>
-                <img class="card-img-top" src="/Images/UserImages/@Model.Listing.User.ImageName" alt="billed" style="max-width: 100px; max-height:100px;">
+                <img class="card-img-top" src="/Images/UserImages/@Model.Listing.User.ImageName" alt="billed" style="max-width: 30%; max-height:30%; padding-left: 2%;">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Name: @Html.DisplayFor(model => model.Listing.User.Name)</li>
                     <li class="list-group-item">University: @Html.DisplayFor(model => model.Listing.User.University)</li>
                 </ul>
             </div>
+
         </div>
+
+
+
     </div>
 </div>
 

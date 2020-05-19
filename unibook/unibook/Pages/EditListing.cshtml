@@ -1,0 +1,60 @@
+﻿@page
+@model unibook.Pages.EditListingModel
+
+@{
+    ViewData["Title"] = "EditListing";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>EditListing</h1>
+
+<h4>Listing</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Listing.Id" />
+            <div class="form-group">
+                <label asp-for="Listing.Semester" class="control-label"></label>
+                <input asp-for="Listing.Semester" class="form-control" />
+                <span asp-validation-for="Listing.Semester" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Listing.Study" class="control-label"></label>
+                <input asp-for="Listing.Study" class="form-control" />
+                <span asp-validation-for="Listing.Study" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Listing.University" class="control-label"></label>
+                <input asp-for="Listing.University" class="form-control" />
+                <span asp-validation-for="Listing.University" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Listing.Description" class="control-label"></label>
+                <input asp-for="Listing.Description" class="form-control" />
+                <span asp-validation-for="Listing.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Listing.Price" class="control-label"></label>
+                <input asp-for="Listing.Price" class="form-control" />
+                <span asp-validation-for="Listing.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ListingImageInput">Add a picture of the book</label> <br>
+                <input type="file" asp-for="ListingImageInput"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
