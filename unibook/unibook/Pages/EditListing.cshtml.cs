@@ -28,7 +28,7 @@ namespace unibook.Pages
             hostingEnvironment = environment;
             _userManager = userManager;
         }
-
+        
         [BindProperty]
         public Listing Listing { get; set; }
         [BindProperty]
@@ -52,7 +52,8 @@ namespace unibook.Pages
             {
                 return NotFound();
             }
-           ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["BookISBN"] = new SelectList(_context.Books, "ISBN", "ISBN");
             return Page();
         }
 
@@ -68,7 +69,7 @@ namespace unibook.Pages
             if (ListingImageInput != null)
             {
                 var fileName = GetUniqueName(ListingImageInput.FileName);
-                var Images = Path.Combine(hostingEnvironment.WebRootPath, "Images/UserImages");
+                var Images = Path.Combine(hostingEnvironment.WebRootPath, "Images/ListingImages");
                 var filePath = Path.Combine(Images, fileName);
                 this.ListingImageInput.CopyTo(new FileStream(filePath, FileMode.Create));
                 this.Listing.ListingImage = fileName; // Set the file name
