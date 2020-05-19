@@ -52,8 +52,8 @@ namespace unibook.Pages
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             ViewData["BookISBN"] = new SelectList(_context.Books, "ISBN", "ISBN");
+            ViewData["ListingImage"] = new SelectList(_context.Listings, "ListingImage", "ListingImage");
             return Page();
         }
 
@@ -66,6 +66,10 @@ namespace unibook.Pages
                 return Page();
             }        
             _context.Attach(Listing).State = EntityState.Modified;
+            if (ListingImageInput == null)
+            {
+                Listing.ListingImage = ListingImage;
+            }
             if (ListingImageInput != null)
             {
                 var fileName = GetUniqueName(ListingImageInput.FileName);
