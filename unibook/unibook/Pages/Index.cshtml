@@ -4,16 +4,16 @@
     ViewData["Title"] = "Home page";
 }
 
-    <div class="text-center">
-        <h1 class="display-4">Unibook</h1>
-        <p>
-            Search for books:
-        </p>
-    </div>
+<div class="text-center">
+    <h1 class="display-4">Unibook</h1>
+    <p>
+        Search for books:
+    </p>
+</div>
     <div class="col-md" style="padding-left: 0%; padding-right: 1%;">
-        <form asp-controller="Listings" asp-action="=" Index">
+        <form method = "GET" asp-page="./SearchResult">
             <p>
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="query">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="SearchString">
             </p>
         </form>
     </div>
