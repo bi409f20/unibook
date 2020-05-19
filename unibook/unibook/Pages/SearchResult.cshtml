@@ -1,0 +1,54 @@
+﻿@page "{SearchString?}"
+@model unibook.Pages.SearchResultModel
+@{
+    ViewData["Title"] = "SearchResult";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Unibook</h1>
+    <p>
+        Search for books:
+    </p>
+</div>
+<div class="col-md" style="padding-left: 0%; padding-right: 1%;">
+    <form asp-controller="Listings" asp-action="=" SearchResult">
+        <p>
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="SearchString">
+        </p>
+    </form>
+</div>
+<h1>Search Result</h1>
+<p>Your search gave @(Model.Listings.Count()) result(s)</p>
+<br>
+<div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
+
+    @foreach (var listing in Model.Listings)
+    {
+        <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
+            <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
+            <div class="card-body">
+                <h5 class="card-title">
+                    @Html.DisplayFor(model => listing.Book.Title)
+                </h5>
+                <p>
+                    <b>
+                        @Html.DisplayNameFor(model => listing.Price):
+                    </b>
+                    @Html.DisplayFor(model => listing.Price) kr
+                </p>
+                <p>
+                    <b>
+                        @Html.DisplayNameFor(model => listing.BookISBN):
+                    </b>
+                    @Html.DisplayFor(model => listing.BookISBN)
+                </p>
+                <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
