@@ -72,8 +72,10 @@
                                     @Html.DisplayFor(model => listing.BookISBN)
                                 </p>
                                 <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
-                                <a asp-page="./EditListing" asp-route-id="@listing.Id" class="btn btn-primary">Edit Listing</a>
-                            </div>
+                                @if (Model.ShowEdit)
+                                {<a asp-page="./EditListing" asp-route-id="@listing.Id" class="btn btn-primary">Edit Listing</a>
+                                }
+                                </div>
                         </div>
                     }
                 </div>

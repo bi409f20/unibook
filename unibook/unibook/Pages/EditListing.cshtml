@@ -57,9 +57,12 @@
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
+        <div>
+             <a class="btn btn-danger" asp-page="./DeleteListing" asp-route-id="@Model.Listing.Id">Delete listing</a>
+        </div>
     </div>
 </div>
-
+<br />
 <div>
     <a asp-page="./Index">Back to List</a>
 </div>

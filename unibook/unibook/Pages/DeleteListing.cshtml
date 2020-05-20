@@ -1,0 +1,71 @@
+﻿@page
+@model unibook.Pages.DeleteListingModel
+
+@{
+    ViewData["Title"] = "DeleteListing";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>DeleteListing</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Listing</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Listing.Semester)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Listing.Semester)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Listing.Study)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Listing.Study)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Listing.University)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Listing.University)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Listing.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Listing.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Listing.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Listing.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Listing.ListingImage)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Listing.ListingImage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Listing.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Listing.User.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Listing.Book)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Listing.Book.ISBN)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Listing.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
