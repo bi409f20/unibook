@@ -28,14 +28,11 @@ namespace unibook.Pages
             hostingEnvironment = environment;
             _userManager = userManager;
         }
-        
         [BindProperty]
         public Listing Listing { get; set; }
         [BindProperty]
         public IFormFile ListingImageInput { set; get; }
 
-        [Display(Name = "Image")]
-        public string ListingImage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -47,7 +44,6 @@ namespace unibook.Pages
             Listing = await _context.Listings
                 .Include(l => l.Book)
                 .Include(l => l.User).FirstOrDefaultAsync(m => m.Id == id);
-
             if (Listing == null)
             {
                 return NotFound();
@@ -64,12 +60,8 @@ namespace unibook.Pages
             if (!ModelState.IsValid)
             {
                 return Page();
-            }        
-            _context.Attach(Listing).State = EntityState.Modified;
-            if (ListingImageInput == null)
-            {
-                Listing.ListingImage = ListingImage;
             }
+            _context.Attach(Listing).State = EntityState.Modified;
             if (ListingImageInput != null)
             {
                 var fileName = GetUniqueName(ListingImageInput.FileName);

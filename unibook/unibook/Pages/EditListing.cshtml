@@ -46,6 +46,10 @@
                 <span asp-validation-for="Listing.BookISBN" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <input type ="hidden" asp-for="Listing.ListingImage" class="form-control" readonly />
+                <span asp-validation-for="Listing.ListingImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="ListingImageInput">Add a picture of the book</label> <br>
                 <input type="file" asp-for="ListingImageInput" />
             </div>

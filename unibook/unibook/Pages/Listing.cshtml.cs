@@ -33,8 +33,11 @@ namespace unibook.Pages
         public async Task<IActionResult> OnGetAsync(int id)
         {
             Listing = await _context.Listings.Include(l => l.Book).Include(l => l.User).FirstOrDefaultAsync(l => l.Id == id);
+            if(_signInManager.IsSignedIn(User))
+            { 
             var userid = Listing.UserId;
             await LoadProfileAsync(userid);
+            }
             if (Listing == null)
             {
                 return RedirectToPage("./Index");
