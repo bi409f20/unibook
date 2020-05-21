@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
+using _context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using SQLitePCL;
+using unibook.Data;
 using unibook.Models;
 
 namespace unibook.Areas.Identity.Pages.Account.Manage
@@ -14,12 +19,15 @@ namespace unibook.Areas.Identity.Pages.Account.Manage
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<DeletePersonalDataModel> _logger;
+        private readonly UnibookContext _context;
 
         public DeletePersonalDataModel(
+            UnibookContext context,
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             ILogger<DeletePersonalDataModel> logger)
         {
+            _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
@@ -36,6 +44,9 @@ namespace unibook.Areas.Identity.Pages.Account.Manage
         }
 
         public bool RequirePassword { get; set; }
+
+        public Listing listing { get; set; }
+        public List<Listing> Listings { get; private set; }
 
         public async Task<IActionResult> OnGet()
         {
@@ -66,9 +77,17 @@ namespace unibook.Areas.Identity.Pages.Account.Manage
                     return Page();
                 }
             }
-            
-            var result = await _userManager.DeleteAsync(user);
+
+            Listings = _context.Listings.ToList(); // SELECT * FROM Listings;
             var userId = await _userManager.GetUserIdAsync(user);
+            var listing = _context.Listings.Where(u => u.UserId == userId).ToList();
+
+            if (listing != null)
+            {
+                _context.Listings.RemoveRange(listing);
+                await _context.SaveChangesAsync();
+            }
+            var result = await _userManager.DeleteAsync(user);
             if (!result.Succeeded)
             {
                 throw new InvalidOperationException($"Unexpected error occurred deleting user with ID '{userId}'.");

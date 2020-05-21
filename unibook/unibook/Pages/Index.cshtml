@@ -7,7 +7,7 @@
 <div class="text-center">
     <h1 class="display-4">Unibook</h1>
     <p>
-        Search for books:
+        An open marketplace for university books
     </p>
 </div>
     <div class="col-md" style="padding-left: 0%; padding-right: 1%;">
@@ -20,16 +20,19 @@
     <p>@(Model.Listings.Count()) Results</p>
     <h4>Recent listings from Aalborg University</h4>
     <br>
-<div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
+<div class="row" runat="server" style="width: 100%;">
 
     @foreach (var listing in Model.Listings.Where(l => l.University == "Aalborg University"))
     {
         <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
             <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
             <div class="card-body">
-                <h5 class="card-title">
+                <p>
+                    <b>
+                        @Html.DisplayNameFor(model => listing.Book.Title)
+                    </b>
                     @Html.DisplayFor(model => listing.Book.Title)
-                </h5>
+                </p>
                 <p>
                     <b>
                         @Html.DisplayNameFor(model => listing.Price):

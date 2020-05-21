@@ -49,10 +49,10 @@
                 <label asp-for="ImageNameInput">Change profile picture</label>
                 <input type="file" asp-for="ImageNameInput" />
             </div>
-            <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
-            <a href="\Identity\Account\Manage\ChangePassword">Change Password</a>
-            <a href="\Identity\Account\Manage\PersonalData">PersonalData</a>
+            <button id="update-profile-button" type="submit" class="btn btn-success">Save</button>
         </form>
+            <a class="btn btn-secondary" style="margin-top: 7%" asp-area= "Identity" asp-page="/Account/Manage/ChangePassword">Change Password</a>
+            
     </div>
 </div>
 
