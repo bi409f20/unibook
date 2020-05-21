@@ -117,9 +117,12 @@
         <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
             <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
             <div class="card-body">
-                <h5 class="card-title">
+                <p>
+                    <b>
+                        @Html.DisplayFor(model => listing.Book.Title)
+                    </b>
                     @Html.DisplayFor(model => listing.Book.Title)
-                </h5>
+                </p>
                 <p>
                     <b>
                         @Html.DisplayNameFor(model => listing.Price):

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using unibook.Models;
 using unibook.Data;
+using System.Data.Entity;
 
 namespace unibook.Pages
 {
@@ -23,7 +24,7 @@ namespace unibook.Pages
 
         public void OnGet()
         {
-            Listings = _context.Listings.ToList(); // SELECT * FROM Listings;
+            Listings = _context.Listings.Include(l => l.Book).ToList(); // SELECT * FROM Listings;
         }
 
         public IActionResult OnPost(string SearchString)
