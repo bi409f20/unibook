@@ -18,244 +18,40 @@
         </form>
     </div>
     <p>@(Model.Listings.Count()) Results</p>
-    <h4>Recent listings from Aalborg University</h4>
     <br>
-<div class="row" runat="server" style="width: 100%;">
-
-    @foreach (var listing in Model.Listings.Where(l => l.University == "Aalborg University"))
+    @foreach (var university in Model.Universities)
     {
-        <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
-            <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
-            <div class="card-body">
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.Book.Title)
-                    </b>
-                    @Html.DisplayFor(model => listing.Book.Title)
-                </p>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.Price):
-                    </b>
-                    @Html.DisplayFor(model => listing.Price) kr
-                </p>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.BookISBN):
-                    </b>
-                    @Html.DisplayFor(model => listing.BookISBN)
-                </p>
-                <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
-            </div>
+        <h4>Recent listings at @university</h4>
+        <div class="row" runat="server" style="width: 100%;">
+            @foreach (var listing in Model.Listings.Where(l => l.University == university))
+            {
+                <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
+                    <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
+                    <div class="card-body">
+                        <p>
+                            <b>
+                                @Html.DisplayNameFor(model => listing.Book.Title)
+                            </b>
+                            @Html.DisplayFor(model => listing.Book.Title)
+                        </p>
+                        <p>
+                            <b>
+                                @Html.DisplayNameFor(model => listing.Price):
+                            </b>
+                            @Html.DisplayFor(model => listing.Price) kr
+                        </p>
+                        <p>
+                            <b>
+                                @Html.DisplayNameFor(model => listing.BookISBN):
+                            </b>
+                            @Html.DisplayFor(model => listing.BookISBN)
+                        </p>
+                        <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
+                    </div>
+                </div>
+            }
         </div>
     }
-</div>
-<h4>Recent listings from Aarhus University</h4>
-<br>
-<div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
-
-    @foreach (var listing in Model.Listings.Where(l => l.University == "Aarhus University"))
-    {
-        <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
-            <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
-            <div class="card-body">
-                <h5 class="card-title">
-                    @Html.DisplayFor(model => listing.Book.Title)
-                </h5>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.Price):
-                    </b>
-                    @Html.DisplayFor(model => listing.Price) kr
-                </p>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.BookISBN):
-                    </b>
-                    @Html.DisplayFor(model => listing.BookISBN)
-                </p>
-                <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
-            </div>
-        </div>
-    }
-</div>
-<h4>Recent listings from Copenhagen Business School</h4>
-<br>
-<div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
-
-    @foreach (var listing in Model.Listings.Where(l => l.University == "Copenhagen Business School"))
-    {
-        <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
-            <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
-            <div class="card-body">
-                <h5 class="card-title">
-                    @Html.DisplayFor(model => listing.Book.Title)
-                </h5>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.Price):
-                    </b>
-                    @Html.DisplayFor(model => listing.Price) kr
-                </p>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.BookISBN):
-                    </b>
-                    @Html.DisplayFor(model => listing.BookISBN)
-                </p>
-                <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
-            </div>
-        </div>
-    }
-</div>
-<h4>Recent listings from Copenhagen University</h4>
-<br>
-<div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
-
-    @foreach (var listing in Model.Listings.Where(l => l.University == "Copenhagen University"))
-    {
-        <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
-            <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
-            <div class="card-body">
-                <p>
-                    <b>
-                        @Html.DisplayFor(model => listing.Book.Title)
-                    </b>
-                    @Html.DisplayFor(model => listing.Book.Title)
-                </p>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.Price):
-                    </b>
-                    @Html.DisplayFor(model => listing.Price) kr
-                </p>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.BookISBN):
-                    </b>
-                    @Html.DisplayFor(model => listing.BookISBN)
-                </p>
-                <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
-            </div>
-        </div>
-    }
-</div>
-<h4>Recent listings from IT University of Copenhagen</h4>
-<br>
-<div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
-
-    @foreach (var listing in Model.Listings.Where(l => l.University == "IT University of Copenhagen"))
-    {
-        <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
-            <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
-            <div class="card-body">
-                <h5 class="card-title">
-                    @Html.DisplayFor(model => listing.Book.Title)
-                </h5>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.Price):
-                    </b>
-                    @Html.DisplayFor(model => listing.Price) kr
-                </p>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.BookISBN):
-                    </b>
-                    @Html.DisplayFor(model => listing.BookISBN)
-                </p>
-                <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
-            </div>
-        </div>
-    }
-</div>
-<h4>Recent listings from Roskilde University</h4>
-<br>
-<div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
-
-    @foreach (var listing in Model.Listings.Where(l => l.University == "Roskilde University"))
-    {
-        <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
-            <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
-            <div class="card-body">
-                <h5 class="card-title">
-                    @Html.DisplayFor(model => listing.Book.Title)
-                </h5>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.Price):
-                    </b>
-                    @Html.DisplayFor(model => listing.Price) kr
-                </p>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.BookISBN):
-                    </b>
-                    @Html.DisplayFor(model => listing.BookISBN)
-                </p>
-                <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
-            </div>
-        </div>
-    }
-</div>
-<h4>Recent listings from Technical University of Denmark</h4>
-<br>
-<div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
-
-    @foreach (var listing in Model.Listings.Where(l => l.University == "Technical University of Denmark"))
-    {
-        <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
-            <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
-            <div class="card-body">
-                <h5 class="card-title">
-                    @Html.DisplayFor(model => listing.Book.Title)
-                </h5>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.Price):
-                    </b>
-                    @Html.DisplayFor(model => listing.Price) kr
-                </p>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.BookISBN):
-                    </b>
-                    @Html.DisplayFor(model => listing.BookISBN)
-                </p>
-                <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
-            </div>
-        </div>
-    }
-</div>
-<h4>Recent listings from University of Southern Denmark</h4>
-<br>
-<div class="row" runat="server" style="margin-left: 0px; margin-right: 0px; width: 100%;">
-
-    @foreach (var listing in Model.Listings.Where(l => l.University == "University of Southern Denmark"))
-    {
-        <div class="card" style=" margin-right: 1%; margin-bottom: 1%; width: 24%;">
-            <img class="card-img-top" src="/Images/ListingImages/@listing.ListingImage" alt="Card image cap" style="height: 312px;" runat="server" />
-            <div class="card-body">
-                <h5 class="card-title">
-                    @Html.DisplayFor(model => listing.Book.Title)
-                </h5>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.Price):
-                    </b>
-                    @Html.DisplayFor(model => listing.Price) kr
-                </p>
-                <p>
-                    <b>
-                        @Html.DisplayNameFor(model => listing.BookISBN):
-                    </b>
-                    @Html.DisplayFor(model => listing.BookISBN)
-                </p>
-                <a asp-page="./Listing" asp-route-id="@listing.Id" class="btn btn-primary">Go to listing</a>
-            </div>
-        </div>
-    }
-</div>
 <div>
     <a asp-page="./Index">Back to List</a>
 </div>

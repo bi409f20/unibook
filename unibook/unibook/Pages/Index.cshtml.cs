@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using unibook.Models;
 using unibook.Data;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace unibook.Pages
 {
@@ -22,9 +22,10 @@ namespace unibook.Pages
             _context = context;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
-            Listings = _context.Listings.Include(l => l.Book).ToList(); // SELECT * FROM Listings;
+            Listings  =await  _context.Listings.Include(l => l.Book).ToListAsync(); // SELECT * FROM Listings;
+            Universities = Listings.Select(l => l.University).Distinct().ToList(); // SELECT DISTINCT(University) FROM Listings ORDER BY University;
         }
 
         public IActionResult OnPost(string SearchString)
@@ -39,8 +40,9 @@ namespace unibook.Pages
 
 
         public List<Book> Books { get; set; }
-        public Listing listing { get; set; }
-        public User user { get; set; }
+        public List<string> Universities { get; set; }
+        public Listing Listing { get; set; }
+        public User User { get; set; }
         public List<Listing> Listings { get; private set; }
     }
 }
