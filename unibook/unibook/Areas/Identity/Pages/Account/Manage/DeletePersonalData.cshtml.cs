@@ -46,6 +46,7 @@ namespace unibook.Areas.Identity.Pages.Account.Manage
         public bool RequirePassword { get; set; }
 
         public Listing listing { get; set; }
+        public List<Ratings> Ratings { get; private set; }
         public List<Listing> Listings { get; private set; }
 
         public async Task<IActionResult> OnGet()
@@ -78,13 +79,20 @@ namespace unibook.Areas.Identity.Pages.Account.Manage
                 }
             }
 
+            Ratings = _context.Ratings.ToList();
             Listings = _context.Listings.ToList(); // SELECT * FROM Listings;
             var userId = await _userManager.GetUserIdAsync(user);
             var listing = _context.Listings.Where(u => u.UserId == userId).ToList();
+            var rating = _context.Ratings.Where(u => u.UserId == userId).ToList();
 
             if (listing != null)
             {
                 _context.Listings.RemoveRange(listing);
+                await _context.SaveChangesAsync();
+            }
+            if (rating != null)
+            {
+                _context.Ratings.RemoveRange(rating);
                 await _context.SaveChangesAsync();
             }
             var result = await _userManager.DeleteAsync(user);
