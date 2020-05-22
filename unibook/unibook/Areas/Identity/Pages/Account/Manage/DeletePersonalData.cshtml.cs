@@ -84,6 +84,7 @@ namespace unibook.Areas.Identity.Pages.Account.Manage
             var userId = await _userManager.GetUserIdAsync(user);
             var listing = _context.Listings.Where(u => u.UserId == userId).ToList();
             var rating = _context.Ratings.Where(u => u.UserId == userId).ToList();
+            var ownrating = _context.Ratings.Where(r => r.RaterId == userId).ToList();
 
             if (listing != null)
             {
@@ -95,6 +96,12 @@ namespace unibook.Areas.Identity.Pages.Account.Manage
                 _context.Ratings.RemoveRange(rating);
                 await _context.SaveChangesAsync();
             }
+            if (ownrating != null)
+            {
+                _context.Ratings.RemoveRange(ownrating);
+                await _context.SaveChangesAsync();
+            }
+
             var result = await _userManager.DeleteAsync(user);
             if (!result.Succeeded)
             {
