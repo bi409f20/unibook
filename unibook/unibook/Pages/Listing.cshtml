@@ -21,7 +21,7 @@
                 <li class="list-group-item"><b>University:</b> @Html.DisplayFor(model => model.Listing.University)</li>
                 <li class="list-group-item"><b>Study:</b> @Html.DisplayFor(model => model.Listing.Study)</li>
             </ul>
-            @if (Model.ShowEdit)
+            @if (Model.ShowEdit || Model.AdminEdit)
             {
                 <a asp-page="./EditListing" asp-route-id="@Model.Listing.Id" class="btn btn-primary">Edit Listing</a>
             }

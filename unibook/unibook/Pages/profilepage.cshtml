@@ -19,6 +19,10 @@
                         <li class="list-group-item">E-mail: <br> @Html.DisplayFor(model => model.Profile.Email)</li>
                         <li class="list-group-item">University: <br> @Html.DisplayFor(model => model.Profile.University)</li>
                         <li class="list-group-item">Rating: <br> @Html.DisplayFor(model => model.Profile.Rating)</li>
+                        @if (Model.AdminCheck)
+                        {
+                        <li class="list-group-item list-group-item-success">Admin</li>
+                        }
                     </ul>
                     @if (!Model.ShowEdit && Model.ShowRating)
                     {

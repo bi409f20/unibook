@@ -14,6 +14,7 @@ namespace unibook.Models
         public virtual string ImageName { get; set; }
         public virtual string City { get; set; }
         public virtual string PostalCode {get; set;}
+        public virtual bool IsAdmin {get; set;}
         public double Rating => Ratings.Any() ? Ratings.Select(r => r.Rating).Average() : 0;
 
         public ICollection<Listing> Listings { get; set; }

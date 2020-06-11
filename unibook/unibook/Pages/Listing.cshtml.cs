@@ -29,6 +29,7 @@ namespace unibook.Pages
         {
             var ownUser = await _userManager.GetUserAsync(User);
             ShowEdit = ownUser.Id.Equals(id);
+            AdminEdit = ownUser.IsAdmin;  
         }
         public async Task<IActionResult> OnGetAsync(int id)
         {
@@ -54,5 +55,6 @@ namespace unibook.Pages
         public Listing Listing { get; set; }
         public List<Listing> Listings { get; private set; }
         public bool ShowEdit { get; set; }
+        public bool AdminEdit { get; set; }
     }
 }

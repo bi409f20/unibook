@@ -49,6 +49,7 @@ namespace unibook.Pages
             ShowEdit = ownUser.Id.Equals(id);
             ShowRating = !(await _context.Ratings.AnyAsync(r => r.UserId == id && r.RaterId == ownUser.Id));
             Listings = await _context.Listings.Include(l => l.Book).Where(l => l.UserId == id).ToListAsync();
+            AdminCheck = ownUser.IsAdmin;
         }
 
         public async Task<IActionResult> OnPostAsync(string id, string returnUrl = null)
@@ -75,6 +76,7 @@ namespace unibook.Pages
         public User Profile { get; set; }
         public Listing Listing { get; set; }
         public List<Listing> Listings { get; private set; }
+        public bool AdminCheck { get; private set; }
         public bool ShowEdit { get; set; }
     }
 }
