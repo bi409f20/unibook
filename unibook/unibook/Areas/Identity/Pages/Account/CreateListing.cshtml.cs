@@ -125,7 +125,7 @@ namespace unibook.Pages
                 _context.Listings.Add(listingcreator);
                 await _context.SaveChangesAsync();
             }
-            return Page();
+            return RedirectToPage("./Index");
         }
         private string GetUniqueName(string fileName)
         {

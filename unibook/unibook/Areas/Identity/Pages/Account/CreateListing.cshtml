@@ -13,37 +13,37 @@
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Input.Title"></label>
-                    <input asp-for="Input.Title" class="form-control" />
+                    <input asp-for="Input.Title" class="form-control" required/>
                     <span asp-validation-for="Input.Title" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Author"></label>
-                    <input asp-for="Input.Author" class="form-control" />
+                    <input asp-for="Input.Author" class="form-control"required />
                     <span asp-validation-for="Input.Author" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Edition"></label>
-                    <input asp-for="Input.Edition" class="form-control" />
+                    <input asp-for="Input.Edition" class="form-control"required />
                     <span asp-validation-for="Input.Edition" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.ISBN"> ISBN <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number" target="_blank">What is this?</a></label>
-                    <input asp-for="Input.ISBN" class="form-control" />
+                    <input asp-for="Input.ISBN" class="form-control"required />
                     <span asp-validation-for="Input.ISBN" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Price">Price in DKK.</label>
-                    <input asp-for="Input.Price" class="form-control" />
+                    <input asp-for="Input.Price" class="form-control" required/>
                     <span asp-validation-for="Input.Price" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Semester"></label>
-                    <input asp-for="Input.Semester" class="form-control" />
+                    <input asp-for="Input.Semester" class="form-control" required/>
                     <span asp-validation-for="Input.Semester" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.University"></label>
-                    <select asp-for="Input.University" class="form-control">
+                    <select asp-for="Input.University" class="form-control" required>
                         <option>Aalborg University </option>
                         <option>Aarhus University </option>
                         <option>Copenhagen Business School</option>
@@ -58,37 +58,22 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Study"></label>
-                    <input asp-for="Input.Study" class="form-control" />
+                    <input asp-for="Input.Study" class="form-control" required/>
                     <span asp-validation-for="Input.Study" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Input.Description"></label>
-                    <input style="height: 175px;" asp-for="Input.Description" class="form-control" />
+                    <input style="height: 175px;" asp-for="Input.Description" class="form-control"required />
                     <span asp-validation-for="Input.Description" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="ListingImageInput">Add a picture of the book</label> <br>
-                    <input type="file" asp-for="ListingImageInput" />
+                    <input type="file" asp-for="ListingImageInput"required />
                 </div>
                 <button type="submit" class="btn btn-primary">Create listing</button>
             </form>
         </div>
-        <!-- Billederne fra CreateListing var her, ved ikke om de skal bruges til noget, rotter
-        <div class="col-md-5">
-            <div class="form-group row">
-                <img src="~/Images/roedaal1.jpg" class="img-thumbnail" style=" height:40%; width:40%" />
-                <img src="~/Images/roedaal2.jpg" class=" img-thumbnail" style=" height:40%; width:40%" />
-            </div>
-            <div class="form-group row">
-                <img src="~/Images/roedaal2.jpg" class="img-thumbnail" style=" height:40%; width:40%" />
-                <img src="~/Images/roedaal1.jpg" class=" img-thumbnail" style=" height:40%; width:40%" />
-            </div>
-
-
-        </div>
-            -->
-
     </div>
 
 </div>
